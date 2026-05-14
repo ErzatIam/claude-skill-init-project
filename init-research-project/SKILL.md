@@ -116,9 +116,9 @@ These are free-text questions, so use single-select with a "I'll type it" option
 
 If the user chooses "skip" for both, skip this round entirely.
 
-#### Round 6 — Final preferences (1 question, adapt options by project type)
+#### Round 6 — Final preferences (1 multi-select question, adapt options by project type)
 
-Wrap up by asking if the user has any behavioral preferences they want baked into the config. Generate 3–4 options that fit the project type and the conversation so far — don't reuse the same static list every time. The goal is to surface useful defaults the user might not think to ask for.
+Wrap up by asking if the user has any behavioral preferences they want baked into the config. This must be **multi-select** so the user can pick several preferences at once. Generate 3–4 options that fit the project type and the conversation so far — don't reuse the same static list every time. The goal is to surface useful defaults the user might not think to ask for.
 
 Some inspiration (pick 3–4 that fit, or invent better ones):
 
@@ -129,11 +129,11 @@ Some inspiration (pick 3–4 that fit, or invent better ones):
 | Systems / Infra | "Always benchmark before and after a change", "Don't modify build system without asking", "Explain memory and CPU impact of each change" |
 | General | "After each mistake — record it in faults.md", "After completing a task — short summary", "When suggesting approaches — explain tradeoffs first" |
 
-Always include "No special preferences" as an option.
+Always include "No special preferences" as an option. If the user selects it alongside other preferences, treat "No special preferences" as the only selection and skip adding anything.
 
 Write whatever the user selects into the most appropriate section of `rules.md`. Use a `## Workflow` or `## Communication` or `## Before certain operations` heading as needed. If the user types a custom instruction, place it where it fits best.
 
-If the user selects "No special preferences", skip without adding anything.
+If the user selects only "No special preferences", skip without adding anything.
 
 #### Stopping early
 
