@@ -143,13 +143,15 @@ If at any point the user says "just generate the files" or indicates they don't 
 
 ### Step 2: Generate the files
 
-Create `.claude/` and write all files. Print a one-line summary after creating each file.
+Create `CLAUDE.md` at project root, plus `.claude/` directory with all sub-files. Print a one-line summary after creating each file.
 
 ---
 
 ## Files to generate
 
-### `.claude/CLAUDE.md` — entry point only
+### `CLAUDE.md` — entry point (project root, NOT inside `.claude/`)
+
+Write this file at the project root so Claude Code auto-loads it. All content lives in the imported sub-files.
 
 ```markdown
 # [Project Name]
@@ -162,8 +164,6 @@ Create `.claude/` and write all files. Print a one-line summary after creating e
 @.claude/faults.md
 <!-- @.claude/references.md -->
 ```
-
-This file is a table of contents only — keep it under 10 lines. All content lives in the imported files.
 
 Uncomment `@.claude/references.md` only if references were provided.
 
