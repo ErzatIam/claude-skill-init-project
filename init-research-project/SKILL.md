@@ -116,6 +116,27 @@ These are free-text questions, so use single-select with a "I'll type it" option
 
 If the user chooses "skip" for both, skip this round entirely.
 
+#### Round 6 — Final preferences (1–2 questions)
+
+Wrap up by asking if the user has any behavioral preferences they want baked into the config. Present common useful options rather than leaving it as a blank "anything else?":
+
+- **Workflow preferences** (multi-select):
+  - "After each mistake or bug — record it in faults.md"
+  - "After completing a task — give a short summary"
+  - "Before optimizing performance — always profile first"
+  - "When suggesting approaches — explain the tradeoffs before coding"
+  - "No special preferences"
+
+Write whatever the user selects into the most appropriate file:
+- "Record to faults" → add a line in `rules.md` under a `## Workflow` section
+- "Short summary after task" → add to `rules.md` under `## Communication`
+- "Profile before optimizing" → add to `rules.md` under `## Before certain operations`
+- "Explain tradeoffs" → add to `rules.md` under `## Communication`
+
+If the user types a custom instruction, write it verbatim into the appropriate section of `rules.md`. Use judgment for placement.
+
+If the user says "none" or "nothing special", skip without adding anything.
+
 #### Stopping early
 
 If at any point the user says "just generate the files" or indicates they don't want more questions, stop the interview and use `[unknown]` for unanswered fields.
@@ -271,7 +292,9 @@ Skip entirely if no references. When generated, also uncomment `@.claude/referen
 |-------|--------|--------------------------|
 | [name] | [Author YYYY / URL / doc name] | [e.g. "baseline to beat", "method we build on"] |
 
-<!-- Claude: when suggesting approaches, check whether they align with or contradict these references. -->
+<!-- Claude: when discussing approaches or comparing against baselines from this table,
+     use WebFetch (arXiv, open-access) or Read (local PDF) to pull the actual paper content
+     before making claims. Don't rely on the title alone. -->
 ```
 
 ---
