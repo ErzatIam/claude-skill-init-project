@@ -116,26 +116,24 @@ These are free-text questions, so use single-select with a "I'll type it" option
 
 If the user chooses "skip" for both, skip this round entirely.
 
-#### Round 6 — Final preferences (1–2 questions)
+#### Round 6 — Final preferences (1 question, adapt options by project type)
 
-Wrap up by asking if the user has any behavioral preferences they want baked into the config. Present common useful options rather than leaving it as a blank "anything else?":
+Wrap up by asking if the user has any behavioral preferences they want baked into the config. Generate 3–4 options that fit the project type and the conversation so far — don't reuse the same static list every time. The goal is to surface useful defaults the user might not think to ask for.
 
-- **Workflow preferences** (multi-select):
-  - "After each mistake or bug — record it in faults.md"
-  - "After completing a task — give a short summary"
-  - "Before optimizing performance — always profile first"
-  - "When suggesting approaches — explain the tradeoffs before coding"
-  - "No special preferences"
+Some inspiration (pick 3–4 that fit, or invent better ones):
 
-Write whatever the user selects into the most appropriate file:
-- "Record to faults" → add a line in `rules.md` under a `## Workflow` section
-- "Short summary after task" → add to `rules.md` under `## Communication`
-- "Profile before optimizing" → add to `rules.md` under `## Before certain operations`
-- "Explain tradeoffs" → add to `rules.md` under `## Communication`
+| Project type | Suggested options |
+|---|---|
+| Research / ML | "Record each failed experiment result in faults.md", "Profile before optimizing any kernel", "Explain tradeoffs before coding", "Summarize after each task" |
+| Web / Product | "Never modify DB schema without asking", "Run tests before suggesting a fix is done", "After each PR merge — update project-statements.md", "Keep UI changes accessible (a11y)" |
+| Systems / Infra | "Always benchmark before and after a change", "Don't modify build system without asking", "Explain memory and CPU impact of each change" |
+| General | "After each mistake — record it in faults.md", "After completing a task — short summary", "When suggesting approaches — explain tradeoffs first" |
 
-If the user types a custom instruction, write it verbatim into the appropriate section of `rules.md`. Use judgment for placement.
+Always include "No special preferences" as an option.
 
-If the user says "none" or "nothing special", skip without adding anything.
+Write whatever the user selects into the most appropriate section of `rules.md`. Use a `## Workflow` or `## Communication` or `## Before certain operations` heading as needed. If the user types a custom instruction, place it where it fits best.
+
+If the user selects "No special preferences", skip without adding anything.
 
 #### Stopping early
 
